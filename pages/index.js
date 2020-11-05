@@ -1,5 +1,6 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -14,8 +15,45 @@ export default function Home() {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
+        <p style={{ fontSize: "1.2rem", maxWidth: "60%" }}>
+          Goal: the screenshot should be rendered with a crisp rendering, like
+          the{" "}
+          <a
+            href="/screenshot-browser.png"
+            style={{ textDecoration: "underline" }}
+          >
+            original image
+          </a>
+          . Without blur, on all devices (retina included). I managed to achieve
+          this only if I set imageSizes: [2000] in next.config.js. Otherwise the
+          image is always scaled to some deviceSizes that are not making it look
+          crisp.
+        </p>
+        <div style={{ maxWidth: "2000px", margin: "2em auto" }}>
+          <Image
+            alt="Screenshot of the TurnShift UI"
+            height={1037}
+            src="/screenshot-browser.png"
+            width={2000}
+          />
+        </div>
+
+        <p style={{ fontSize: "1.2rem", maxWidth: "60%" }}>
+          If I set the image to be as large as one of the deviceSizes (2048)
+          then it works.
+        </p>
+
+        <div style={{ maxWidth: "2048px", margin: "2em auto" }}>
+          <Image
+            alt="Screenshot of the TurnShift UI"
+            height={1062}
+            src="/screenshot-browser.png"
+            width={2048}
+          />
+        </div>
+
         <p className={styles.description}>
-          Get started by editing{' '}
+          Get started by editing{" "}
           <code className={styles.code}>pages/index.js</code>
         </p>
 
@@ -56,10 +94,10 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         </a>
       </footer>
     </div>
-  )
+  );
 }
